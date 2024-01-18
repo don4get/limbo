@@ -4,34 +4,31 @@ from plotly.subplots import make_subplots
 
 from limbo.demography.demography_model import simulate_with_fertility_rate
 
+app = Dash(__name__, title="demography_app")
+server = app.server
 
-def main():
-    app = Dash(__name__)
-
-    app.layout = html.Div([
-        html.H1(children='Demography simulator', style={'textAlign': 'center', 'fontFamily': 'Helvetica'}),
-        html.Div(
-            children=[
-                html.Div(
-                    children=[
-                        dcc.Slider(1, 2, id='slider-fertility-rate', value=1.2),
-                        dcc.Graph(id='sum_pops_graph', style={'height': '80vh'}),
-                    ],
-                    style={'flex': '50%', 'padding': '10px'}
-                ),
-                html.Div(
-                    children=[
-                        dcc.Slider(0, 50, id='slider-duration-years', value=0),
-                        dcc.Graph(id='populations_graph', style={'height': '80vh'}),
-                    ],
-                    style={'flex': '50%', 'padding': '10px'}
-                ),
-            ],
-            style={'display': 'flex', 'flexDirection': 'row'}
-        )
-    ])
-
-    app.run(debug=True)
+app.layout = html.Div([
+    html.H1(children='Demography simulator', style={'textAlign': 'center', 'fontFamily': 'Helvetica'}),
+    html.Div(
+        children=[
+            html.Div(
+                children=[
+                    dcc.Slider(1, 2, id='slider-fertility-rate', value=1.2),
+                    dcc.Graph(id='sum_pops_graph', style={'height': '80vh'}),
+                ],
+                style={'flex': '50%', 'padding': '10px'}
+            ),
+            html.Div(
+                children=[
+                    dcc.Slider(0, 50, id='slider-duration-years', value=0),
+                    dcc.Graph(id='populations_graph', style={'height': '80vh'}),
+                ],
+                style={'flex': '50%', 'padding': '10px'}
+            ),
+        ],
+        style={'display': 'flex', 'flexDirection': 'row'}
+    )
+])
 
 
 @callback(
@@ -98,4 +95,4 @@ def update_graphs(value):
 
 
 if __name__ == "__main__":
-    main()
+    app.run_server(debug=True)
