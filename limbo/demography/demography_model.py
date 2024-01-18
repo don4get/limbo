@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats as stats
 
@@ -40,10 +39,6 @@ def simulate_model(population, fecondity_rate=2.1, duration_years=30, plot=False
         ratios2 = [sum(population[i:]) / sum(population[average_age_young_worker:i]) for i in range(40, 70)]
         legal_retirement_age = abs(np.array(ratios2) - ratios[0]).argmin() + 40
         pension_ages.append(legal_retirement_age)
-
-        if plot:
-            plt.bar(range(len(population)), population, color='red', alpha=0.6)
-            plt.show()
 
     return populations, ratios, immigrations, pension_ages
 
