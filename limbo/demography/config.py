@@ -1,0 +1,11 @@
+life_expectancy = 85
+life_expectancy_std = 5
+average_age_young_worker = 18
+average_fertility_min_age = 15
+average_fertility_max_age = 49
+average_age_retired_worker = 65
+shape_parameter = 20.0
+scale_parameter = 95.0
+average_life_expectancy = 120.0
+current_year = 2024
+current_population = 65_000
